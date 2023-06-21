@@ -1,8 +1,8 @@
 footer{
   width: 100vw;
-  height: 5vh;
-  background-color: light;
+  height: 30px;
   text-align: center;
-  position : absolute;
-  bottom : 0; 
+  position: absolute; 
+  bottom: 0;
+  background-color: skyblue;
 }

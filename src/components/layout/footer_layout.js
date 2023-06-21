@@ -3,7 +3,9 @@ import '../css/footer.css'
 function Footer(){
   return(
     <footer>
-      @CopyRight / NEGORANI
+      <span>
+       @CopyRight / NEGORANI     
+      </span>
     </footer>
   )
 }

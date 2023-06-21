@@ -1,11 +1,9 @@
 .wrap{
-  background-color: aquamarine;
   width: 100vw;
   height: 180px;
   text-align: center;
 }
   #container{
-    background-color: wheat;
     width: 85vw;
     height: 180px;
     display: inline-block;
