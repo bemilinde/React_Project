@@ -1,0 +1,31 @@
+.wrap{
+  background-color: aquamarine;
+  width: 100vw;
+  height: 180px;
+  text-align: center;
+}
+  #container{
+    background-color: wheat;
+    width: 85vw;
+    height: 180px;
+    display: inline-block;
+  }
+    #logo>#logimg{
+      height: 180px;
+      width: 180px;
+      float: left;
+    }
+    #title_main{
+      font-size: 70px;
+      color: skyblue;
+    }
+    #title_sub{
+      color: black;
+    }
+    #menu{
+      margin-top: 10px;
+    }
+      .menu-btn{
+        font-size: 20px;
+        margin-left: 25px;
+      }

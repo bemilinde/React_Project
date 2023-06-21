@@ -1,7 +1,16 @@
+import React from 'react';
+import Layout from './components/layout/main_layout.js';
+import ImageCarousel from './components/Carousel.js';
 
 function Main() {
   return (
-    <div>기본</div>
+    <>
+      <Layout>
+        
+        <ImageCarousel/>
+        
+      </Layout>
+    </>
   );
 }
 
