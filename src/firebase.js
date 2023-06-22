@@ -8,6 +8,7 @@ import { getAuth } from "firebase/auth"; // 코드 추가
 const firebaseConfig = {
   apiKey: "AIzaSyDOEKmMMAkzD1vf9wmgkluLYrN2El_DFuQ",
   authDomain: "negorani-aa22c.firebaseapp.com",
+  databaseURL: "https://negorani-aa22c-default-rtdb.firebaseio.com",
   projectId: "negorani-aa22c",
   storageBucket: "negorani-aa22c.appspot.com",
   messagingSenderId: "565870551651",
