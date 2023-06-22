@@ -46,7 +46,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-bottom: 10px; /* Added margin-bottom property */
+  margin-bottom: 10px; 
 }
 
 .user-info {
@@ -63,4 +63,15 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.google-login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: skyblue;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 10px; 
 }

@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import {
   onAuthStateChanged,
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup
 } from "firebase/auth";
 import { auth } from "../../firebase.js";
 import { useNavigate } from "react-router-dom";
-import '../css/login.css'
+import "../css/login.css";
+import { FcGoogle } from "react-icons/fc";
 
 function Login() {
   let navigator = useNavigate();
@@ -14,6 +17,31 @@ function Login() {
   const [loginPassword, setLoginPassword] = useState("");
   const [user, setUser] = useState({});
   const [loginError, setLoginError] = useState("");
+  const [userData, setUserData] = useState(null);
+  const [googleLoginError, setGoogleLoginError] = useState("");
+  const [isGoogleLoginLoading, setIsGoogleLoginLoading] = useState(false);
+
+  function handleGoogleLogin() {
+
+    const provider = new GoogleAuthProvider(); 
+    setIsGoogleLoginLoading(true);
+
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setUserData(user); 
+
+        navigator("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("구글 로그인에 실패했습니다. 다시 시도해주세요.");
+      })
+      .finally(() => {
+        setIsGoogleLoginLoading(false); 
+      });
+  }
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
@@ -72,19 +100,26 @@ function Login() {
           />
 
           <div className="user-info">
-
-          <button onClick={login} className="login-button">
-            로그인
-          </button>
-                <button
-                  onClick={() => navigator("/login/signup")}
-                  className="signup-button"
-                >
-                  회원가입
-                </button>
-                <button className="back-button" onClick={handleGoBack}>
-                  뒤로가기
-                </button>
+            <button onClick={login} className="login-button">
+              로그인
+            </button>
+            <button
+              onClick={handleGoogleLogin}
+              className="google-login-button"
+            >
+              <FcGoogle size="22"/>  구글 로그인
+            </button>
+            {isGoogleLoginLoading}
+            {googleLoginError && <span>{googleLoginError}</span>}
+            <button
+              onClick={() => navigator("/login/signup")}
+              className="signup-button"
+            >
+              회원가입
+            </button>
+            <button className="back-button" onClick={handleGoBack}>
+              뒤로가기
+            </button>
           </div>
         </div>
       </div>

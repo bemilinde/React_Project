@@ -25,7 +25,7 @@ function SignUp() {
       );
       console.log(user);
       setRegisterError("");
-      // Redirect to home screen or desired location after successful registration
+      
       navigator("/login");
     } catch (error) {
       console.log(error.message);
