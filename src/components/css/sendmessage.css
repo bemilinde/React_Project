@@ -1,0 +1,30 @@
+.send-message {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background-color: #f5f5f5;
+  bottom: 0;
+}
+
+.send-message input {
+  flex: 1;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+}
+
+.send-message button {
+  margin-left: 10px;
+  height: 30px;
+  border-radius: 4px;
+  background-color: skyblue;
+  color: #fff;
+  border: none;
+  padding: 0 10px;
+  cursor: pointer;;
+}
+
+.send-message button:hover {
+  background-color: #3367d6;
+}

@@ -1,6 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth"; // 코드 추가
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -8,7 +10,6 @@ import { getAuth } from "firebase/auth"; // 코드 추가
 const firebaseConfig = {
   apiKey: "AIzaSyDOEKmMMAkzD1vf9wmgkluLYrN2El_DFuQ",
   authDomain: "negorani-aa22c.firebaseapp.com",
-  databaseURL: "https://negorani-aa22c-default-rtdb.firebaseio.com",
   projectId: "negorani-aa22c",
   storageBucket: "negorani-aa22c.appspot.com",
   messagingSenderId: "565870551651",
@@ -18,3 +19,4 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app); // 코드 추가
+export const db = getFirestore(app);

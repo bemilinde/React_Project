@@ -47,12 +47,12 @@ function Header() {
               <CiViewList size="30" /> 게시판
             </Button>
 
-            <Button className='menu-btn' variant="outline-secondary">
-              <CiChat1 size="30" /> 채팅하기
-            </Button>
-
             {user ? (
               <>
+                <Button className='menu-btn' variant="outline-secondary" onClick={()=> {navigator('/chat')}}>
+                  <CiChat1 size="30" /> 채팅하기
+                </Button>
+              
                 <Button className='menu-btn' variant="outline-secondary">
                   <CiUser size="30" /> 마이페이지
                 </Button>

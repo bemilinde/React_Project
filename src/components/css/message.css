@@ -1,0 +1,32 @@
+.chat-bubble {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.chat-bubble.right {
+  flex-direction: row-reverse;
+}
+
+.chat-bubble__left {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.chat-bubble__right {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.user-name {
+  margin: 0;
+  font-weight: bold;
+}
+
+.user-message {
+  margin: 5px 0 0;
+}
