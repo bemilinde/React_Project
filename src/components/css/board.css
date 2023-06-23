@@ -1,56 +1,26 @@
-.board-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
+#wrap {
+  margin-top: 10px;
+  width: 100vw;
+  height: 900px;
+  background-color: aqua;
+  text-align: center;
+  position: relative;
 }
 
-.board-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
+#board_table {
+  background-color: cadetblue;
+  width: 70vw;
+  height: 800px;
+  margin-top: 25px;
+  display: inline-block;
+  position: relative;
+  top: 20px; 
 }
 
-.post-item {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-.post-item h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.post-item p {
-  margin-bottom: 10px;
-}
-
-.post-item button {
-  margin-right: 5px;
-}
-
-.form-input {
-  margin-bottom: 10px;
-}
-
-.form-input input,
-.form-input textarea {
-  width: 100%;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.form-input button {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 4px;
-  background-color: #3367d6;
-  color: #fff;
-  cursor: pointer;
-}
-
-.form-input button:hover {
-  background-color: #3355a8;
+#board_page {
+  background-color: tomato;
+  width: 70vw;
+  height: 100px;
+  position: absolute;
+  bottom: 0;
 }

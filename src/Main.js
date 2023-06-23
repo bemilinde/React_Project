@@ -6,8 +6,8 @@ import ChatBox from './components/chat/chatbox.js';
 import ImageCarousel from './components/Carousel.js';
 import './components/css/main.css'
 import { Routes, Route } from 'react-router-dom';
-import Board from './components/board/board_main.js';
-
+import BoardMain from './components/board/board_main.js';
+import BoardCreate from './components/board/board_create.js';
 function Main() {
   return (
 
@@ -21,10 +21,12 @@ function Main() {
                 </Layout>
               </>
             }/>
-            <Route path="/login" element={ <Login/> }/> 
-            <Route path="/login/signup" element={ <SignUp/> }/>
-            <Route path="/chat" element={ <ChatBox/> }/>
-            <Route path="/board" element={ <Board/> }/>
+            <Route path="/login" element={<Login />} />
+            <Route path="/login/signup" element={<SignUp />} />
+            <Route path="/chat" element={<ChatBox />} />
+            <Route path="/board" element={<BoardMain />} />
+            <Route path="/board/create" element={<BoardCreate />} />
+            <Route path="/board/view/:id" element={<BoardMain />} />
           </Routes>
 
 
