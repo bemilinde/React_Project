@@ -5,7 +5,8 @@ import SignUp from './components/authentication/signup.js';
 import ChatBox from './components/chat/chatbox.js';
 import ImageCarousel from './components/Carousel.js';
 import './components/css/main.css'
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import Board from './components/board/board_main.js';
 
 function Main() {
   return (
@@ -23,6 +24,7 @@ function Main() {
             <Route path="/login" element={ <Login/> }/> 
             <Route path="/login/signup" element={ <SignUp/> }/>
             <Route path="/chat" element={ <ChatBox/> }/>
+            <Route path="/board" element={ <Board/> }/>
           </Routes>
 
 

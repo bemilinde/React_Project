@@ -16,6 +16,7 @@ function Header() {
 
   const logout = async () => {
     await signOut(auth);
+    navigator('/');
   };
 
 
@@ -43,7 +44,7 @@ function Header() {
               <CiShoppingCart size="30" /> 장바구니
             </Button>
 
-            <Button className='menu-btn' variant="outline-secondary">
+            <Button className='menu-btn' variant="outline-secondary" onClick={()=>{navigator('/board')}}>
               <CiViewList size="30" /> 게시판
             </Button>
 
