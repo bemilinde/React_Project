@@ -16,7 +16,7 @@ function Main() {
               <>
                 <Layout>
                   <div>
-                    <ImageCarousel/>                    
+                    <ImageCarousel/>                  
                   </div>
                 </Layout>
               </>
