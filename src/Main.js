@@ -8,6 +8,8 @@ import './components/css/main.css'
 import { Routes, Route } from 'react-router-dom';
 import BoardMain from './components/board/board_main.js';
 import BoardCreate from './components/board/board_create.js';
+import BoardView from './components/board/board_view.js';
+import BoardEdit from './components/board/board_edit.js';
 function Main() {
   return (
 
@@ -26,7 +28,8 @@ function Main() {
             <Route path="/chat" element={<ChatBox />} />
             <Route path="/board" element={<BoardMain />} />
             <Route path="/board/create" element={<BoardCreate />} />
-            <Route path="/board/view/:id" element={<BoardMain />} />
+            <Route path="/board/view/:id" element={<BoardView />} />
+            <Route path="/board/:id/edit" element={<BoardEdit />} />
           </Routes>
 
 

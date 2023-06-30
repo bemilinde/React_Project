@@ -21,3 +21,6 @@ react icon
 //중간중간 멈춤현상 state 오류인거 같음 ex 채팅하기 -> 채팅하기 누를때 멈춤현상
 6. firbase 채팅구현 // 디자인 수정해야함
 //폴더경로정리 해야함
+7. board firestore create 구현
+8. board view 구현
+9. board CRUD 구현
