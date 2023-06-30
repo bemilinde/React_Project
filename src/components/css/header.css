@@ -15,15 +15,18 @@
   display: inline-block;
 }
 
+
 #logo > #logimg {
   height: 180px;
   width: 180px;
   float: left;
 }
 
+
 #title_main {
   font-size: 70px;
   color: skyblue;
+  
 }
 
 #title_sub {

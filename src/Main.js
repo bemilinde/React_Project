@@ -10,6 +10,10 @@ import BoardMain from './components/board/board_main.js';
 import BoardCreate from './components/board/board_create.js';
 import BoardView from './components/board/board_view.js';
 import BoardEdit from './components/board/board_edit.js';
+import ProductMain from './components/product/product_main.js';
+import ProductCreate from './components/product/product_create.js';
+import ProductCart from './components/product/product_cart.js';
+import ProductView from './components/product/product_view.js';
 function Main() {
   return (
 
@@ -30,6 +34,13 @@ function Main() {
             <Route path="/board/create" element={<BoardCreate />} />
             <Route path="/board/view/:id" element={<BoardView />} />
             <Route path="/board/:id/edit" element={<BoardEdit />} />
+
+            <Route path="/product" element={<ProductMain />} />
+            <Route path="/product/create" element={<ProductCreate />} />
+            <Route path="/product/cart" element={<ProductCart />} />
+            <Route path="/product/:id/view" element={<ProductView />} />
+
+
           </Routes>
 
 

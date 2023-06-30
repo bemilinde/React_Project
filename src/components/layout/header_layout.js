@@ -2,12 +2,12 @@ import '../css/header.css';
 import React, { useState } from "react";
 import { Button } from 'react-bootstrap';
 import { CiShop, CiDeliveryTruck, CiShoppingCart, CiViewList, CiChat1, CiFaceSmile, CiUser, CiLogout } from "react-icons/ci";
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { auth } from '../../firebase';
 import { signOut } from "firebase/auth";
 
 function Header() {
-  let navigator = useNavigate();
+
   const [user, setUser] = useState(null);
 
   auth.onAuthStateChanged((currentUser) => {
@@ -16,55 +16,78 @@ function Header() {
 
   const logout = async () => {
     await signOut(auth);
-    navigator('/');
+    <Link to={'/'}/>
   };
+  
+
 
 
   return (
     <>
       <header className='wrap'>
         <div id='container'>
-          <div id='logo' onClick={() => { navigator('/'); }}>
-            <img id='logimg' src={process.env.PUBLIC_URL + '/img/logo.jpg'} />
-          </div>
+          <Link to={'/'}>
+            <div id='logo'>
+              <img id='logimg' src={process.env.PUBLIC_URL + '/img/logo.jpg'} />
+            </div>
+          </Link>
           <div id='title'>
-            <span id='title_main' onClick={() => { navigator('/'); }}>N E G O</span>
+            <Link to={'/'} style={{textDecoration: 'none'}}>
+             <span id='title_main'>N E G O</span>
+            </Link>
             <span id='title_sub'> 라니?</span>
           </div>
           <div id='menu'>
-            <Button className='menu-btn' variant="outline-secondary">
-              <CiShop size="30" /> 쇼핑하기
-            </Button>
+            <Link to={'/product'}>
+              <Button className='menu-btn' variant="outline-secondary">
+                <CiShop size="30" /> 쇼핑하기
+              </Button>
+            </Link>
 
-            <Button className='menu-btn' variant="outline-secondary">
-              <CiDeliveryTruck size="30" /> 판매하기
-            </Button>
+            <Link to={'/product/create'}>
+              <Button className='menu-btn' variant="outline-secondary">
+                <CiDeliveryTruck size="30" /> 판매하기
+              </Button>
+            </Link>
 
-            <Button className='menu-btn' variant="outline-secondary">
-              <CiShoppingCart size="30" /> 장바구니
-            </Button>
+            <Link to={'/product/cart'}>
+              <Button className='menu-btn' variant="outline-secondary">
+                <CiShoppingCart size="30" /> 장바구니
+              </Button>
+            </Link>
 
-            <Button className='menu-btn' variant="outline-secondary" onClick={()=>{navigator('/board')}}>
-              <CiViewList size="30" /> 게시판
-            </Button>
+            <Link to={'/board'}>
+              <Button className='menu-btn' variant="outline-secondary">
+                <CiViewList size="30" /> 게시판
+              </Button>
+            </Link>
 
             {user ? (
               <>
-                <Button className='menu-btn' variant="outline-secondary" onClick={()=> {navigator('/chat')}}>
-                  <CiChat1 size="30" /> 채팅하기
-                </Button>
-              
+                <Link to={'/chat'}>
+                  <Button className='menu-btn' variant="outline-secondary">
+                    <CiChat1 size="30" /> 채팅하기
+                  </Button>
+                </Link>
+
+                <Link>
                 <Button className='menu-btn' variant="outline-secondary">
                   <CiUser size="30" /> 마이페이지
                 </Button>
+                </Link>
+                
+                <Link>
                 <Button className='menu-btn' variant="outline-secondary" onClick={logout}>
                   <CiLogout size="30" /> 로그아웃
                 </Button>
+                </Link>
               </>
             ) : (
-              <Button className='menu-btn' variant="outline-secondary" onClick={() => { navigator('/login'); }}>
-                <CiFaceSmile size="30" /> 로그인
-              </Button>
+              <Link to={'/login'}>
+                <Button className='menu-btn' variant="outline-secondary">
+                  <CiFaceSmile size="30" /> 로그인
+                </Button>
+              </Link>
             )}
           </div>
         </div>
