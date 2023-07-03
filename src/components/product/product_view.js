@@ -34,7 +34,8 @@ function ProductView() {
     try {
       const user = auth.currentUser;
       if (!user) {
-        console.log("User not logged in.");
+        alert("로그인 후 이용해주세요.");
+        navigate('/login'); // Redirect to the login page
         return;
       }
 
@@ -50,7 +51,7 @@ function ProductView() {
       }
 
       console.log("Product added to cart:", product);
-      navigate('/product/cart')
+      navigate('/product/cart');
     } catch (error) {
       console.error("Error adding product to cart:", error);
     }
@@ -62,19 +63,19 @@ function ProductView() {
 
   return (
     <Layout>
-        <div className="product-view">
-          <div className="product_view_image">
-            <img src={product.imageURL} alt={product.name} />
-          </div>
-          <div className="product_view_details">
-            <h1 className="product_view_name">{product.name}</h1>
-            <p className="product_view_description">{product.description}</p>
-            <p className="product_view_price">가격: {product.price}원</p>
-            <p className="product_view_author">작성자: {product.authorEmail}</p>
-            <p className="product_view_time">작성 시간: {new Date(product.created_at).toLocaleString()}</p>
-            <Button variant="outline-secondary" onClick={addToCart}>장바구니에 추가</Button>
-          </div>
+      <div className="product-view">
+        <div className="product_view_image">
+          <img src={product.imageURL} alt={product.name} />
         </div>
+        <div className="product_view_details">
+          <h1 className="product_view_name">{product.name}</h1>
+          <p className="product_view_description">{product.description}</p>
+          <p className="product_view_price">가격: {product.price}원</p>
+          <p className="product_view_author">작성자: {product.authorEmail}</p>
+          <p className="product_view_time">작성 시간: {new Date(product.created_at).toLocaleString()}</p>
+          <Button variant="outline-secondary" onClick={addToCart}>장바구니에 추가</Button>
+        </div>
+      </div>
     </Layout>
   );
 }

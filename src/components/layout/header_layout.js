@@ -10,17 +10,32 @@ function Header() {
 
   const [user, setUser] = useState(null);
 
+
   auth.onAuthStateChanged((currentUser) => {
     setUser(currentUser);
   });
 
   const logout = async () => {
     await signOut(auth);
-    <Link to={'/'}/>
+    // Redirect to the home page
+    window.location.href = '/';
   };
-  
 
+  const handleCartClick = () => {
+    if (!user) {
+      alert("로그인 후 이용해주세요.");
+      // Redirect to the login page
+      window.location.href = '/login';
+    }
+  };
 
+  const handleSellClick = () => {
+    if (!user) {
+      alert("로그인 후 이용해주세요.");
+      // Redirect to the login page
+      window.location.href = '/login';
+    }
+  };
 
   return (
     <>
@@ -45,13 +60,13 @@ function Header() {
             </Link>
 
             <Link to={'/product/create'}>
-              <Button className='menu-btn' variant="outline-secondary">
-                <CiDeliveryTruck size="30" /> 판매하기
-              </Button>
+            <Button className='menu-btn' variant="outline-secondary" onClick={handleSellClick}>
+              <CiDeliveryTruck size="30" /> 판매하기
+            </Button>
             </Link>
 
             <Link to={'/product/cart'}>
-              <Button className='menu-btn' variant="outline-secondary">
+              <Button className='menu-btn' variant="outline-secondary" onClick={handleCartClick}>
                 <CiShoppingCart size="30" /> 장바구니
               </Button>
             </Link>

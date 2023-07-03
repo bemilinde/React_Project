@@ -26,3 +26,4 @@ react icon
 9. board CRUD 구현(디자인 수정해야함)
 10. product main, view, cart, crud 구현
 //디자인, 디테일 잡기
+11. 배포하기
