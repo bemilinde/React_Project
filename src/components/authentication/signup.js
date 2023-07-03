@@ -26,7 +26,7 @@ function SignUp() {
       console.log(user);
       setRegisterError("");
       
-      navigator("/login");
+      navigator("/");
     } catch (error) {
       console.log(error.message);
       alert("회원 가입에 실패했습니다. 다시 시도해주세요.");

@@ -69,17 +69,11 @@ function Header() {
                     <CiChat1 size="30" /> 채팅하기
                   </Button>
                 </Link>
-
-                <Link>
-                <Button className='menu-btn' variant="outline-secondary">
-                  <CiUser size="30" /> 마이페이지
-                </Button>
-                </Link>
                 
                 <Link>
-                <Button className='menu-btn' variant="outline-secondary" onClick={logout}>
-                  <CiLogout size="30" /> 로그아웃
-                </Button>
+                  <Button className='menu-btn' variant="outline-secondary" onClick={logout}>
+                    <CiLogout size="30" /> 로그아웃
+                  </Button>
                 </Link>
               </>
             ) : (

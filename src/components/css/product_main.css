@@ -1,17 +1,13 @@
 .row{
   justify-content: center;
 }
-.Product_Card{
+
+.product_main_card{
   width: 250px;
-  height: 350px;
+  height: 400px;
   margin-left: 50px;
   margin-top: 20px;
   margin-bottom: 20px;
-}
-
-.link {
-  text-decoration: none;
-  color: black;
 }
 
 .prpduct-name,
@@ -21,3 +17,6 @@
   font-size: 1rem;
 }
 
+.product_btn{
+  margin-right: 5px;
+}

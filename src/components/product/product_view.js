@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import Layout from "../layout/main_layout";
 import { db, auth } from "../../firebase";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import '../css/product_view.css'
 
 function ProductView() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -34,10 +37,10 @@ function ProductView() {
         console.log("User not logged in.");
         return;
       }
-  
+
       const cartRef = doc(db, "cart", user.uid);
       const cartSnap = await getDoc(cartRef);
-  
+
       if (cartSnap.exists()) {
         const cartData = cartSnap.data();
         const updatedCart = [...cartData.products, product];
@@ -45,30 +48,33 @@ function ProductView() {
       } else {
         await setDoc(cartRef, { products: [product] });
       }
-  
+
       console.log("Product added to cart:", product);
+      navigate('/product/cart')
     } catch (error) {
       console.error("Error adding product to cart:", error);
     }
   };
-  
+
   if (!product) {
     return <div>Loading...</div>;
   }
 
   return (
     <Layout>
-      <div>
-        <h1>상품 상세보기</h1>
-        <div>
-          <h2>상품명: {product.name}</h2>
-          <p>상품 내용: {product.description}</p>
-          <p>가격: {product.price}원</p>
-          <p>작성자: {product.authorEmail}</p>
-          <p>작성 시간: {new Date(product.created_at).toLocaleString()}</p>
-          <Button variant="primary" onClick={addToCart}>장바구니에 추가</Button>
+        <div className="product-view">
+          <div className="product_view_image">
+            <img src={product.imageURL} alt={product.name} />
+          </div>
+          <div className="product_view_details">
+            <h1 className="product_view_name">{product.name}</h1>
+            <p className="product_view_description">{product.description}</p>
+            <p className="product_view_price">가격: {product.price}원</p>
+            <p className="product_view_author">작성자: {product.authorEmail}</p>
+            <p className="product_view_time">작성 시간: {new Date(product.created_at).toLocaleString()}</p>
+            <Button variant="outline-secondary" onClick={addToCart}>장바구니에 추가</Button>
+          </div>
         </div>
-      </div>
     </Layout>
   );
 }

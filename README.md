@@ -24,3 +24,5 @@ react icon
 7. board firestore create 구현
 8. board view 구현
 9. board CRUD 구현(디자인 수정해야함)
+10. product main, view, cart, crud 구현
+//디자인, 디테일 잡기
