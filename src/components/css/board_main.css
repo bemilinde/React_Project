@@ -1,0 +1,58 @@
+.board_main{
+  min-height: 650px;
+  width: 100%;
+  font-size: 19px;
+}
+.board-table {
+  width: 1080px;
+  height: auto;
+  margin: 0 auto;
+  float: left;
+  border-collapse: separate;
+  border-spacing: 0 10px;  
+}
+
+.board_header{
+  border-bottom: 3px solid skyblue;
+}
+
+.board-table th:nth-child(1),
+.board-table td:nth-child(1) {
+  width: 50%;
+}
+
+.board-table th:nth-child(2),
+.board-table td:nth-child(2),
+.board-table th:nth-child(3),
+.board-table td:nth-child(3) {
+  width: 30%;
+  
+}
+
+.board-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 100px;
+  margin-top: 50px;
+}
+
+.board_main_btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;  
+}
+
+
+.board-link {
+  color: black;
+  text-decoration: none;
+}
+
+.board-link:hover {
+  color: skyblue;
+}

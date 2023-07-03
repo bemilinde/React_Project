@@ -1,4 +1,5 @@
 .product-view {
+  height: 650px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +14,8 @@
 }
 
 .product_view_image img {
-  max-width: 100%;
+  width: 400px;
+  width: 400px;
   height: auto;
   display: block;
 }

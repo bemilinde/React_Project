@@ -21,6 +21,7 @@ import { db } from './firebase';
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import TEST from './TEST.js';
 
 function Main() {
 
@@ -98,8 +99,15 @@ function Main() {
       <Route path="/product/create" element={<ProductCreate refreshProducts={fetchProducts} />} />
       <Route path="/product/cart" element={<ProductCart />} />
       <Route path="/product/:id/view" element={<ProductView />} />
+
+      <Route path="/test" element={<TEST />} />
+
+
     </Routes>
   );
 }
 
 export default Main;
+
+
+

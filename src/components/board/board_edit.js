@@ -38,8 +38,7 @@ function BoardEdit() {
   };
 
   return (
-    <Layout>
-      <h1>게시물 수정</h1>    
+    <Layout> 
       {initialValues && (
         <ArticleForm mode="update" initialValues={initialValues} onSubmit={handleUpdate} />
       )}

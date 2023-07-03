@@ -5,70 +5,64 @@ import { collection, getDocs, query, orderBy, onSnapshot } from "firebase/firest
 import { useEffect, useState } from "react";
 import { DateTime } from "luxon";
 
+import { Table, Button } from 'react-bootstrap';
 
-import { Table } from 'react-bootstrap';
+import '../css/board_main.css';
 
+function BoardMain() {
+  const [list, setList] = useState([]);
 
-function BoardMain(){
+  useEffect(() => {
+    const unsubscribe = onSnapshot(query(collection(db, "articles"), orderBy("created_at", "desc")), (snapshot) => {
+      const newList = snapshot.docs.map((doc) => {
+        const data = doc.data();
+        data.id = doc.id;
+        return data;
+      });
+      setList(newList);
+    });
 
-  const [ list, setList ] = useState([]);
+    return () => unsubscribe();
+  }, []);
 
-  useEffect(()=>{
-    onSnapshot(query( collection( db, 'articles' ), orderBy( 'created_at', 'desc') ), result =>{
-      const newList = [];
-          result.forEach( doc =>{
-            const data = doc.data();
-            data.id = doc.id;
-            newList.push( data );
-        })
-        setList( newList );
-    })
-    // getDocs(query( collection( db, 'articles' ), orderBy( 'created_at', 'desc') ) )
-    //   .then( result => {
-    //     const newList = [];
-    //       result.forEach( doc =>{
-    //         const data = doc.data();
-    //         data.id = doc.id;
-    //         newList.push( data );
-    //     })
-    //     setList( newList );
-    //   })
-  }, [])
-  
-  return(
-    <>
-      <Layout>
+  return (
+    <Layout>
+      <>
+        <div className="board_main">
 
-        <Table responsive="sm">
-          <thead>
-            <tr>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성시간</th>
-            </tr>
-          </thead>
-          <tbody>
-            {
-              list.map( item => (
-                <tr key={ item.id }>
-                <td>
-                  <Link to={`/board/view/${item.id}`}>{item.subject}</Link>
-                </td>
-                  <td>{item.author}</td>
-                  <td>{DateTime.fromMillis( item.created_at ).toFormat( 'yyyy-LL-dd HH:mm:ss' )}</td>
+         <div className="board_main_btn">
+            <Link to="/board/create">
+              <Button variant="outline-secondary">글쓰기</Button>
+            </Link>
+          </div>
+
+          <div className="board-container">
+            <Table responsive="sm" className="board-table">
+              <thead>
+                <tr className="board_header">
+                  <th>제목</th>
+                  <th>작성자</th>
+                  <th>작성시간</th>
                 </tr>
-              ))
-            }
-          </tbody>
-      </Table>
+              </thead>
+              <tbody className="board_content">
+                {list.map((item) => (
+                  <tr key={item.id}>
+                    <td>
+                      <Link to={`/board/view/${item.id}`} className="board-link">{item.subject}</Link>
+                    </td>
+                    <td>{item.author}</td>
+                    <td>{DateTime.fromMillis(item.created_at).toFormat("yyyy-LL-dd HH:mm:ss")}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
 
-      <Link to="/board/create">
-       <button>글쓰기</button>
-      </Link>
-
-      </Layout>
-    </>
-  )
+          </div>
+        </div>
+      </>
+    </Layout>
+  );
 }
 
-export default BoardMain
+export default BoardMain;

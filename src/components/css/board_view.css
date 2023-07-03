@@ -1,0 +1,49 @@
+.board_view {
+  width: 100%;
+  height: 650px;
+  display: block;
+  margin-top: 20px;
+}
+
+.view_title,
+.view_user,
+.view_content,
+.view_btn_wrap {
+  width: 1080px;
+  height: auto;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.view_title {
+  height: auto;
+  font-size: 24px;
+  line-height: 1.5;
+}
+
+.view_user {
+  height: 50px;
+  font-size: 18px;
+  line-height: 0.5;  
+  border-bottom: 1px solid skyblue;  
+  border-top: 1px solid skyblue;
+}
+
+.view_content {
+  height: 350px;
+  font-size: 20px;
+  line-height: 2;
+  border-bottom: 1px solid skyblue;
+}
+
+.view_btn_wrap {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  border-bottom: none;
+}
+
+.view_btn {
+  margin-right: 20px;
+  
+}

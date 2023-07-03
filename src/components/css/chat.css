@@ -1,15 +1,16 @@
 .chat-box {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   height: 65vh;
-  width: 80vw;
+  width: 70vw;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 20px;
   box-sizing: border-box;
-  margin-top: 13vw;
-  margin-left: 10vw;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 15vw;
   
 }
 

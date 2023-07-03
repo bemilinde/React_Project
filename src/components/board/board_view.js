@@ -3,6 +3,8 @@ import { collection, query, onSnapshot, doc, deleteDoc, getDoc, addDoc, serverTi
 import { useState, useEffect } from "react";
 import Layout from "../layout/main_layout";
 import { db, auth } from "../../firebase"; // Firebase auth 추가
+import '../css/board_view.css'
+import { Button } from "react-bootstrap";
 
 function BoardView() {
   const { id } = useParams();
@@ -43,19 +45,32 @@ function BoardView() {
 
   return (
     <Layout>
-      <h1>{subject}</h1>
-      <p>{content}</p>
-      {user && user.email === author && (
-        <>
-          <button onClick={Delete}>삭제</button>
-          <Link to={`/board/${id}/edit`}>
-            <button>수정</button>
+
+      <div className="board_view">
+        <div className="view_title">
+          제목 : {subject}
+        </div>
+        <div className="view_user">
+          {author}
+        </div>
+        <div className="view_content">
+          {content}
+        </div>
+        <div className="view_btn_wrap">
+          {user && user.email === author && (
+          <>
+            <Button className="view_btn" variant="outline-secondary" onClick={Delete}>삭제</Button>
+              <Link to={`/board/${id}/edit`}>
+            <Button className="view_btn" variant="outline-secondary" >수정</Button>
+            </Link>
+          </>
+          )}
+          <Link to={'/board'}>
+           <Button className="view_btn" variant="outline-secondary" >뒤로가기</Button>
           </Link>
-        </>
-      )}
-      <Link to={'/board'}>
-        <button>뒤로가기</button>
-      </Link>
+        </div>
+      </div>
+
     </Layout>
   );
 }

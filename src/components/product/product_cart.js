@@ -4,6 +4,7 @@ import { db, auth } from "../../firebase";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import Button from 'react-bootstrap/Button';
 import '../css/product_cart.css';
+import { Link } from "react-router-dom";
 
 function ProductCart() {
   const [cartProducts, setCartProducts] = useState([]);
@@ -123,10 +124,11 @@ function ProductCart() {
             <div className="cart-total" >
               총액: {totalAmount}원    
             </div>
-            <Button variant="outline-secondary">
-              구매하기
-            </Button>
-
+            <Link to={'/test'}>
+              <Button variant="outline-secondary">
+                구매하기
+              </Button>
+            </Link>
           </div>
           </>
                 
@@ -139,3 +141,5 @@ function ProductCart() {
 }
 
 export default ProductCart;
+
+

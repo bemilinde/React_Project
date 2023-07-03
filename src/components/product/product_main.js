@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import Layout from "../layout/main_layout";
-import { db } from "../../firebase";
+import { db, auth } from "../../firebase";
 import { collection, query, orderBy, getDocs, deleteDoc, doc } from "firebase/firestore";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import '../css/product_main.css'
+import { useAuthState } from "react-firebase-hooks/auth";
+import "../css/product_main.css";
 
 function ProductMain() {
   const [products, setProducts] = useState([]);
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -48,7 +50,7 @@ function ProductMain() {
   return (
     <Layout>
       <div>
-       <h2 style={{ marginLeft : "10vw", marginTop : "25px"}}>상품 목록  &gt;&gt;</h2>
+        <h2 style={{ marginLeft: "10vw", marginTop: "25px" }}>상품 목록 &gt;&gt;</h2>
         {products.length === 0 ? (
           <p>상품이 없습니다.</p>
         ) : (
@@ -62,21 +64,22 @@ function ProductMain() {
                   style={{ width: "200px", height: "200px" }}
                 />
                 <Card.Body>
-                  <Card.Title className='product-name'>상품명: {product.name}</Card.Title>
-                  <Card.Text className='product-description'>{product.description}</Card.Text>
-                  <Card.Text className='product-price'>{product.price} 원</Card.Text>
-
+                  <Card.Title className="product-name">상품명: {product.name}</Card.Title>
+                  <Card.Text className="product-description">{product.description}</Card.Text>
+                  <Card.Text className="product-price">{product.price} 원</Card.Text>
                   <Card.Text>작성자: {product.authorEmail}</Card.Text>
                   <Link to={`/product/${product.id}/view`}>
                     <Button className="product_btn" variant="outline-secondary">상품상세보기</Button>
                   </Link>
-                  <Button
-                    className="product_btn" 
-                    variant="outline-secondary"
-                    onClick={() => handleDelete(product.id)}
-                  >
-                    삭제
-                  </Button>
+                  {user && product.authorEmail === user.email && (
+                    <Button
+                      className="product_btn"
+                      variant="outline-secondary"
+                      onClick={() => handleDelete(product.id)}
+                    >
+                      삭제
+                    </Button>
+                  )}
                 </Card.Body>
               </Card>
             ))}
@@ -87,4 +90,4 @@ function ProductMain() {
   );
 }
 
-export default ProductMain;
+export default ProductMain

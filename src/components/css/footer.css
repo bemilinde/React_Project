@@ -4,12 +4,3 @@
   text-align: center;
   background-color: skyblue;
 }
-
-.footer-container {
-  position: relative;
-  bottom: 0;
-}
-
-.content {
-  padding-bottom: 30px; /* Adjust this value to match the height of the footer */
-}

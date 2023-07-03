@@ -42,9 +42,9 @@ const ChatBox = () => {
   }, [messages]);
 
   return (
-    <>
       <Layout>
-        <main className="chat-box">
+        
+        <div className="chat-box">
           <div className="messages-wrapper">
             {messages?.map((message) => (
               <Message key={message.id} message={message} />
@@ -52,9 +52,9 @@ const ChatBox = () => {
             <span ref={scroll}></span>
           </div>
           <SendMessage scroll={scroll} />
-        </main>
-      </Layout>
-    </>
+        </div>
+
+      </Layout>    
   );
 };
 
