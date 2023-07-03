@@ -84,7 +84,6 @@ function ProductCreate({ refreshProducts }) {
           />
         </div>
         <div className="product-details">
-          <h1>상품 설명</h1>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">상품명:</label>

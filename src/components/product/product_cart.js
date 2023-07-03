@@ -3,14 +3,19 @@ import Layout from "../layout/main_layout";
 import { db, auth } from "../../firebase";
 import { getDoc, doc, updateDoc } from "firebase/firestore";
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import '../css/product_cart.css';
 
 function ProductCart() {
   const [cartProducts, setCartProducts] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
     fetchCartProducts();
   }, []);
+
+  useEffect(() => {
+    calculateTotalAmount();
+  }, [cartProducts]);
 
   const fetchCartProducts = async () => {
     try {
@@ -68,26 +73,65 @@ function ProductCart() {
     }
   };
 
+  const calculateTotalAmount = () => {
+    let total = 0;
+    cartProducts.forEach((product) => {
+      total += product.price;
+    });
+    setTotalAmount(total);
+  };
+
   return (
     <Layout>
-      <div>
-        <h1>장바구니</h1>
+      <div className="cart-container">
         {cartProducts.length > 0 ? (
-          <ul>
-            {cartProducts.map((product) => (
-              <li key={product.id}>
-                <h3>{product.name}</h3>
-                <p>{product.description}</p>
-                <p>가격: {product.price}원</p>
-                <img src={product.imageURL} alt={product.name} style={{ width: "100px" }} />
-                <Button onClick={() => removeFromCart(product.id)}>
-                  장바구니에서 제거
-                </Button>
-              </li>
-            ))}
-          </ul>
+          <>
+          <table className="cart-items">
+            <thead>
+              <tr>
+                <th>상품 이미지</th>
+                <th>상품명</th>
+                <th>상품설명</th>
+                <th>가격</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {cartProducts.map((product) => (
+                <tr key={product.id} className="cart-item">
+                  <td className="cart-item-image">
+                    <img src={product.imageURL} alt={product.name} />
+                  </td>
+                  <td className="cart-item-info">
+                    <h3 className="cart-item-title">{product.name}</h3>                    
+                  </td>
+                  <td>
+                  <p className="cart-item-description">{product.description}</p>
+                  </td>
+                  <td className="cart-item-price">{product.price}원</td>
+                  <td className="cart-item-action">
+                    <Button variant="outline-secondary" onClick={() => removeFromCart(product.id)}>
+                      제거
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <div className="cart_total_main">
+            <div className="cart-total" >
+              총액: {totalAmount}원    
+            </div>
+            <Button variant="outline-secondary">
+              구매하기
+            </Button>
+
+          </div>
+          </>
+                
         ) : (
-          <p>장바구니가 비어 있습니다.</p>
+          <p className="cart-empty-message">장바구니가 비어 있습니다.</p>
         )}
       </div>
     </Layout>

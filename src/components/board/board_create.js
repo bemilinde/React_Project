@@ -1,5 +1,5 @@
 import Layout from "../layout/main_layout"
-import './board_create.css'
+import '../css/board_create.css'
 import ArticleForm from "./ArticleForm"
 
 function BoardCreate(){
