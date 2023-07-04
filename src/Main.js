@@ -1,27 +1,27 @@
-// Main.js
-
-import React, { useEffect, useState } from 'react';
-import Layout from './components/layout/main_layout.js';
-import Login from './components/authentication/login.js';
-import SignUp from './components/authentication/signup.js';
-import ChatBox from './components/chat/chatbox.js';
-import ImageCarousel from './components/Carousel.js';
-import './components/css/main.css'
-import { Routes, Route, useNavigate } from 'react-router-dom';
-import BoardMain from './components/board/board_main.js';
-import BoardCreate from './components/board/board_create.js';
-import BoardView from './components/board/board_view.js';
-import BoardEdit from './components/board/board_edit.js';
-import ProductMain from './components/product/product_main.js';
-import ProductCreate from './components/product/product_create.js';
-import ProductCart from './components/product/product_cart.js';
-import ProductView from './components/product/product_view.js';
-import { collection, query, orderBy, getDocs, limit } from 'firebase/firestore';
-import { db } from './firebase';
+import React, { useEffect, useState} from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
-import TEST from './TEST.js';
+import { db } from './firebase';
+import { collection, query, orderBy, getDocs, limit } from 'firebase/firestore';
+
+import Layout from './layout/main_layout.js';
+import ImageCarousel from './layout/Carousel.js';
+import Login from './authentication/login.js';
+import SignUp from './authentication/signup';
+import ChatBox from './chat/chatbox.js';
+import BoardMain from './board/board_main.js';
+import BoardCreate from './board/board_create.js';
+import BoardView from './board/board_view.js';
+import BoardEdit from './board/board_edit.js';
+import ProductMain from './product/product_main.js';
+import ProductCreate from './product/product_create.js';
+import ProductCart from './product/product_cart.js';
+import ProductView from './product/product_view.js';
+import Notice from './Editing.js';
+import './layout/layout.css/main.css';
+
 
 function Main() {
 
@@ -67,7 +67,7 @@ function Main() {
                         variant="top"
                         src={product.imageURL}
                         alt={product.name}
-                        style={{ width: "200px", height: "200px" }}
+                        style={{ width: "200px", height: "200px", marginLeft : "10px", marginTop : "15px"}}
                       />
                       <Card.Body>
                         <Card.Title className='product-name'>상품명: {product.name}</Card.Title>
@@ -100,7 +100,7 @@ function Main() {
       <Route path="/product/cart" element={<ProductCart />} />
       <Route path="/product/:id/view" element={<ProductView />} />
 
-      <Route path="/test" element={<TEST />} />
+      <Route path="/editing" element={<Notice />} />
 
 
     </Routes>

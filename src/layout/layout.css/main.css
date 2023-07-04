@@ -1,0 +1,23 @@
+.row{
+  justify-content: center;
+}
+.Product_Card{
+  width: 250px;
+  height: 400px;
+  margin-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+}
+
+.prpduct-name,
+.prpduct-description,
+.prpduct-price{
+  text-align: left;
+  font-size: 1rem;
+}
+
