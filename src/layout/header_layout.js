@@ -26,19 +26,13 @@ function Header() {
     window.location.href = '/';
   };
 
-  const handleCartClick = () => {
+  const loginController = () => {
     if (!user) {
       alert("로그인 후 이용해주세요.");
       window.location.href = '/';
     }
   };
 
-  const handleSellClick = () => {
-    if (!user) {
-      alert("로그인 후 이용해주세요.");
-      window.location.href = '/';
-    }
-  };
 
   return (
     <>
@@ -64,13 +58,13 @@ function Header() {
             </Link>
 
             <Link to={'/product/create'}>
-            <Button className='menu-btn' variant="outline-secondary" onClick={handleSellClick}>
+            <Button className='menu-btn' variant="outline-secondary" onClick={loginController}>
               <CiDeliveryTruck size="30" /> 판매하기
             </Button>
             </Link>
 
             <Link to={'/product/cart'}>
-              <Button className='menu-btn' variant="outline-secondary" onClick={handleCartClick}>
+              <Button className='menu-btn' variant="outline-secondary" onClick={loginController}>
                 <CiShoppingCart size="30" /> 장바구니
               </Button>
             </Link>
@@ -81,14 +75,14 @@ function Header() {
               </Button>
             </Link>
 
+            <Link to={'/chat'}>
+              <Button className='menu-btn' variant="outline-secondary" onClick={loginController}>
+                <CiChat1 size="30" /> 채팅하기
+              </Button>
+            </Link>
+
             {user ? (
-              <>
-                <Link to={'/chat'}>
-                  <Button className='menu-btn' variant="outline-secondary">
-                    <CiChat1 size="30" /> 채팅하기
-                  </Button>
-                </Link>
-                
+              <>                
                 <Link>
                   <Button className='menu-btn' variant="outline-secondary" onClick={logout}>
                     <CiLogout size="30" /> 로그아웃
